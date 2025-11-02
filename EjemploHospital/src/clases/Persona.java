@@ -1,78 +1,51 @@
+package clases;
+
 import javax.swing.JOptionPane;
 
 public class Persona {
-
     private String numeroDeDNI;
     private String nombre;
     private String apellido;
-    private String fechaDeNacimiento;
+    private String fechaNacimiento;
     private String direccion;
-    private String ciudadDeProcedencia;
+    private String ciudadProcedencia;
 
-    public void imprimirDatosPersona(String datos) {
-        datos += "Nombre: " + nombre + "\n";
-        datos += "Apellido: " + apellido + "\n";
-        datos += "Fecha de Nacimiento: " + fechaDeNacimiento + "\n";
-        datos += "Dirección: " + direccion + "\n";
-        datos += "Ciudad de Procedencia: " + ciudadDeProcedencia + "\n";
+    public String getNumeroDeDNI() { return numeroDeDNI; }
+    public void setNumeroDeDNI(String numeroDeDNI) { this.numeroDeDNI = numeroDeDNI; }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public String getApellido() { return apellido; }
+    public void setApellido(String apellido) { this.apellido = apellido; }
+    public String getFechaNacimiento() { return fechaNacimiento; }
+    public void setFechaNacimiento(String fechaNacimiento) { this.fechaNacimiento = fechaNacimiento; }
+    public String getDireccion() { return direccion; }
+    public void setDireccion(String direccion) { this.direccion = direccion; }
+    public String getCiudadProcedencia() { return ciudadProcedencia; }
+    public void setCiudadProcedencia(String ciudadProcedencia) { this.ciudadProcedencia = ciudadProcedencia; }
 
-        System.out.println(datos);
-    }
 
     public void registrarDatos() {
-        numeroDeDNI = JOptionPane.showInputDialog("Ingresa el número del documento:");
-        nombre = JOptionPane.showInputDialog("Ingresa el nombre:");
-        apellido = JOptionPane.showInputDialog("Ingresa el apellido:");
-        fechaDeNacimiento = JOptionPane.showInputDialog("Ingresa la fecha de nacimiento (dd/mm/aaaa):");
-        direccion = JOptionPane.showInputDialog("Ingresa la dirección:");
-        ciudadDeProcedencia = JOptionPane.showInputDialog("Ingresa la ciudad de procedencia:");
+        try {
+            setNumeroDeDNI(JOptionPane.showInputDialog("Ingrese número de DNI:"));
+            setNombre(JOptionPane.showInputDialog("Ingrese nombre:"));
+            setApellido(JOptionPane.showInputDialog("Ingrese apellido:"));
+            setFechaNacimiento(JOptionPane.showInputDialog("Ingrese fecha de nacimiento:"));
+            setDireccion(JOptionPane.showInputDialog("Ingrese dirección:"));
+            setCiudadProcedencia(JOptionPane.showInputDialog("Ingrese ciudad de procedencia:"));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al ingresar datos de persona.");
+        }
     }
 
-    public String getNumeroDeDNI() {
-        return numeroDeDNI;
-    }
 
-    public void setNumeroDeDNI(String numeroDeDNI) {
-        this.numeroDeDNI = numeroDeDNI;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getFechaDeNacimiento() {
-        return fechaDeNacimiento;
-    }
-
-    public void setFechaDeNacimiento(String fechaDeNacimiento) {
-        this.fechaDeNacimiento = fechaDeNacimiento;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getCiudadDeProcedencia() {
-        return ciudadDeProcedencia;
-    }
-
-    public void setCiudadDeProcedencia(String ciudadDeProcedencia) {
-        this.ciudadDeProcedencia = ciudadDeProcedencia;
+    public void imprimirDatosPersona(String encabezado) {
+        String datos = encabezado + "\n";
+        datos += "Nombre: " + getNombre() + " " + getApellido() + "\n";
+        datos += "DNI: " + getNumeroDeDNI() + "\n";
+        datos += "Fecha Nac.: " + getFechaNacimiento() + "\n";
+        datos += "Dirección: " + getDireccion() + "\n";
+        datos += "Ciudad: " + getCiudadProcedencia() + "\n";
+        System.out.println(datos);
     }
 }
+
